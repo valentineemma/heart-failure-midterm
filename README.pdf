@@ -1,0 +1,105 @@
+# Heart Failure Clinical Records Project
+
+**Authors:** Emma Valentine and Olivia Barcela  
+**Course:** CAI5735: Applied Data Science in Health
+
+## Research question
+
+How is ejection fraction related to serum creatinine, and does
+that relationship differ between patients who died during
+follow-up and patients who did not?
+
+## Dataset
+
+We use the instructor-provided Heart Failure Clinical Records CSV.
+
+The dataset contains 299 patient records and 13 columns.
+Our checks found no missing values or exact duplicate rows.
+
+According to the accompanying course handout, the records were
+collected in Faisalabad, Pakistan, in 2015. All patients already
+had heart failure.
+
+Original dataset:
+https://archive.ics.uci.edu/dataset/519/heart+failure+clinical+records
+
+Citation:
+Heart Failure Clinical Records [Dataset]. (2020).
+UCI Machine Learning Repository.
+https://doi.org/10.24432/C5Z89R
+
+## Main columns
+
+- ejection_fraction: Ejection fraction, measured in percent.
+- serum_creatinine: Blood creatinine level, measured in mg/dL.
+- DEATH_EVENT: 1 means death recorded during follow-up;
+  0 means no death recorded.
+- time: Recorded follow-up/event time, measured in days.
+
+## Analysis
+
+Our Marimo notebook includes:
+
+- Checks for missing values and exact duplicate rows.
+- A computed column with readable outcome labels.
+- Filtering by death outcome.
+- Sorting by serum creatinine.
+- Grouping by outcome to calculate counts, means, and medians.
+- A histogram, boxplot, scatter plot, and group comparison bar chart.
+- Pearson and Spearman correlations.
+- A comparison of recorded follow-up/event times.
+
+## Main findings
+
+The overall Pearson correlation between ejection fraction and
+serum creatinine is -0.011, indicating little overall linear association.
+
+Within outcome groups, Pearson correlation is -0.107 for patients
+without a recorded death and 0.230 for patients with a recorded death.
+We did not test whether these group correlations differ significantly.
+
+Patients with a recorded death have lower mean ejection fraction
+(33.47% versus 40.27%) and higher mean serum creatinine
+(1.84 versus 1.18 mg/dL).
+
+Spearman correlation in the recorded-death group is 0.024.
+The much weaker rank correlation suggests that the positive
+Pearson result is sensitive to measurement sizes and extreme values.
+
+## Limitations
+
+This descriptive analysis cannot establish causation.
+All patients already had heart failure, and the outcome groups
+have different sizes and recorded follow-up/event times.
+
+We did not adjust for confounders or perform survival analysis.
+No death recorded during follow-up does not guarantee
+long-term survival.
+
+## Project files
+
+- emma_heart_project.py: Marimo notebook.
+- heart_failure_clinical_records_dataset.csv: Dataset.
+
+Keep both files in the same folder.
+
+## How to run the notebook
+
+Install Python and download this repository using
+Code > Download ZIP on GitHub. Extract the ZIP before continuing.
+
+Open PowerShell in the extracted folder containing the notebook
+and CSV. Install the required packages:
+
+    py -m pip install marimo pandas matplotlib scipy
+
+Open the notebook:
+
+    py -m marimo edit emma_heart_project.py
+
+Keep PowerShell open while using the notebook in your browser.
+Run the cells to view the tables, charts, and conclusion.
+
+## Repository
+
+https://github.com/valentineemma/heart-failure-midterm
